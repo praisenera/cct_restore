@@ -5,7 +5,7 @@ import About from "./Components/About";
 import Footer from "./Components/Footer";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
-import AdminDashboard from "./Components/AdminDashboard";
+import Profile from "./Components/Profile";
 import EnrollmentForm from "./Components/Enrollment";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -19,21 +19,24 @@ function App() {
     <Router>
       <Routes>
         <Route
-          path="/enrollmentform"
+          path="/profile"
           element={
             <>
-              <EnrollmentForm />
+              <OffcanvasExample />
+              <Profile />
             </>
           }
         />
         <Route
-          path="/admindashboard"
+          path="/enrollmentform"
           element={
             <>
-              <AdminDashboard />
+              <OffcanvasExample />
+              <EnrollmentForm />
             </>
           }
         />
+
         <Route
           path="/login"
           element={
@@ -63,7 +66,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/"
+          path="/cct_restore"
           element={
             <>
               <OffcanvasExample />

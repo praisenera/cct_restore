@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -25,8 +26,34 @@ function Footer() {
             <img
               src={require("../img/logo.jpg")}
               alt="logo"
-              style={{ float: "right", paddingLeft: "100px" }}
+              style={{ float: "right", paddingLeft: "150px" }}
             />
+          </div>
+          <div classsName="social">
+            <Link to="#">
+              <img
+                src={require("../img/fb.png")}
+                alt="fb"
+                style={{ width: "70px" }}
+                className="ps-3"
+              />
+            </Link>
+            <Link to="#">
+              <img
+                src={require("../img/insta.png")}
+                alt="insta"
+                style={{ width: "70px" }}
+                className="ps-3"
+              />
+            </Link>
+            <Link to="https://www.google.com/maps/place/Christian+College+of+Tanauan/@14.0896001,121.1479972,15z/data=!4m6!3m5!1s0x33bd6fe4ae8e10f1:0xdf4bb97f30ff3030!8m2!3d14.0896001!4d121.1479972!16s%2Fg%2F11jcy7jvk9?hl=en&entry=ttu">
+              <img
+                src={require("../img/maps.png")}
+                alt="maps"
+                style={{ width: "70px" }}
+                className="ps-3"
+              />
+            </Link>
           </div>
         </Container>
       </footer>

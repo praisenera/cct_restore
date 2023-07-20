@@ -1,10 +1,12 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 function Profile() {
   return (
     <>
+      <Sidebar />
       <Container>
         <div className="row">
           <h1>Profile</h1>
@@ -20,7 +22,7 @@ function Profile() {
           <p>Email: </p>
         </div>
         <div className="row">
-          <Link to="/enrollment" className="btn btn-primary">
+          <Link to="/enrollmentform" className="btn btn-primary" style>
             Enroll Now!
           </Link>
         </div>
