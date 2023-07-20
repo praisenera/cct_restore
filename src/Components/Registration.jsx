@@ -1,9 +1,10 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import EnrollmentForm from "./Enrollment";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Modal, Spinner } from "react-bootstrap";
 import { auth, db, storage } from "../config/firebaseconfig";
 import { addDoc, collection } from "firebase/firestore";
+import { useEffect } from "react";
 
 function Registration(props) {
   const students = props?.students?.filter((x) => !x.course);
@@ -19,6 +20,13 @@ function Registration(props) {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [spinner, setSpinner] = useState("");
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  }, [count]);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -54,7 +62,8 @@ function Registration(props) {
     }
   };
   const studentsCollectionRef = collection(db, "students");
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setSpinner(" ");
     console.log(
       firstName,
@@ -90,10 +99,15 @@ function Registration(props) {
     }
     setSpinner("");
   };
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       {auth.currentUser ? (
-        <EnrollmentForm />
+        <></>
       ) : (
         <>
           <div className="pb-3" style={{ marginTop: "100px" }}>
@@ -303,11 +317,19 @@ function Registration(props) {
                     Loading...
                   </Button>
                 ) : (
-                  <Button onClick={handleSubmit}>Register</Button>
+                  <Button onClick={handleShow}>Register</Button>
                 )}
               </div>
             </div>
           </div>
+
+          <Modal show={show} onHide={handleClose} size="xl">
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <EnrollmentForm firstName={firstName} lastName={lastName} />
+            {/* <Modal.Footer></Modal.Footer> */}
+          </Modal>
         </>
       )}
     </>
