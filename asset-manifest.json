@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/cct_restore/static/css/main.50cfb95f.css",
+    "main.js": "/cct_restore/static/js/main.9e765c0b.js",
+    "static/js/787.4a535919.chunk.js": "/cct_restore/static/js/787.4a535919.chunk.js",
+    "static/media/fa-solid-900.svg": "/cct_restore/static/media/fa-solid-900.7a8b4f130182d19a2d7c.svg",
+    "static/media/fa-brands-400.svg": "/cct_restore/static/media/fa-brands-400.2f517e09eb2ca6650ff5.svg",
+    "static/media/vb.gif": "/cct_restore/static/media/vb.bc467cd4c38c97bcc281.gif",
+    "static/media/hero.PNG": "/cct_restore/static/media/hero.c57f2c95942bf27acd4b.PNG",
+    "static/media/buwan.gif": "/cct_restore/static/media/buwan.fcc038867697f889b9c6.gif",
+    "static/media/bsba.jpg": "/cct_restore/static/media/bsba.2e7677536763eea8baed.jpg",
+    "static/media/tourism.PNG": "/cct_restore/static/media/tourism.1a9f8af7659e49563805.PNG",
+    "static/media/bsa.png": "/cct_restore/static/media/bsa.4c750fc9f3ca385ecd09.png",
+    "static/media/fa-solid-900.eot": "/cct_restore/static/media/fa-solid-900.9bbb245e67a133f6e486.eot",
+    "static/media/fa-solid-900.ttf": "/cct_restore/static/media/fa-solid-900.be9ee23c0c6390141475.ttf",
+    "static/media/fa-regular-400.svg": "/cct_restore/static/media/fa-regular-400.4689f52cc96215721344.svg",
+    "static/media/fa-brands-400.eot": "/cct_restore/static/media/fa-brands-400.23f19bb08961f37aaf69.eot",
+    "static/media/fa-brands-400.ttf": "/cct_restore/static/media/fa-brands-400.527940b104eb2ea366c8.ttf",
+    "static/media/owner.png": "/cct_restore/static/media/owner.7f459a2c73d31987449d.png",
+    "static/media/fa-solid-900.woff": "/cct_restore/static/media/fa-solid-900.eeccf4f66002c6f2ba24.woff",
+    "static/media/fa-brands-400.woff": "/cct_restore/static/media/fa-brands-400.2285773e6b4b172f07d9.woff",
+    "static/media/fa-solid-900.woff2": "/cct_restore/static/media/fa-solid-900.1551f4f60c37af51121f.woff2",
+    "static/media/concert.jpg": "/cct_restore/static/media/concert.84b91419b03d55fc27af.jpg",
+    "static/media/fa-brands-400.woff2": "/cct_restore/static/media/fa-brands-400.d878b0a6a1144760244f.woff2",
+    "static/media/bshrdm.jpg": "/cct_restore/static/media/bshrdm.2e8ae1c5d2f21057112a.jpg",
+    "static/media/insta.png": "/cct_restore/static/media/insta.5e853fbce6d1f4a3c580.png",
+    "static/media/fa-regular-400.eot": "/cct_restore/static/media/fa-regular-400.77206a6bb316fa0aded5.eot",
+    "static/media/fa-regular-400.ttf": "/cct_restore/static/media/fa-regular-400.491974d108fe4002b2aa.ttf",
+    "static/media/maps.png": "/cct_restore/static/media/maps.9cd98cdf6cc619102a9b.png",
+    "static/media/fa-regular-400.woff": "/cct_restore/static/media/fa-regular-400.bb58e57c48a3e911f15f.woff",
+    "static/media/fb.png": "/cct_restore/static/media/fb.01a470d813915c298403.png",
+    "static/media/fa-regular-400.woff2": "/cct_restore/static/media/fa-regular-400.7a3337626410ca2f4071.woff2",
+    "index.html": "/cct_restore/index.html",
+    "main.50cfb95f.css.map": "/cct_restore/static/css/main.50cfb95f.css.map",
+    "main.9e765c0b.js.map": "/cct_restore/static/js/main.9e765c0b.js.map",
+    "787.4a535919.chunk.js.map": "/cct_restore/static/js/787.4a535919.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50cfb95f.css",
+    "static/js/main.9e765c0b.js"
+  ]
+}
