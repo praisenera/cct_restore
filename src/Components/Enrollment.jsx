@@ -10,23 +10,19 @@ function EnrollmentForm(props) {
   const students = props?.students?.filter((x) => !x.course);
   const now = new Date().toISOString().split("T")[0];
 
-  const [selected, setSelected] = useState("");
   const [selectedstudent, setSelectedstudent] = useState({});
-  const [bdate, setbdate] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [yearlevel, setYearlevel] = useState("");
-  const [homead, setHomeAd] = useState("");
-  const [mobilenum, setMobileNum] = useState("");
-  const [tel, setTelNum] = useState("");
-  const [course, setCourse] = useState("");
+  const [mother_name, setMotherName] = useState("");
+  const [con_mother, setConMother] = useState("");
+  const [father_name, setFatherName] = useState("");
+  const [con_pops, setConFather] = useState("");
+  const [guardian_name, setGuardianName] = useState("");
+  const [con_guard, setConGuard] = useState("");
 
   const [spin, setSpin] = useState("");
 
   const select = (event) => {
-    setSelected(event.target.value);
     setSelectedstudent(
-      students.find((student) => student.email == event.target.value)
+      students.find((student) => student.id == event.target.value)
     );
     console.log(selectedstudent);
   };
@@ -38,14 +34,20 @@ function EnrollmentForm(props) {
     const xDoc = doc(db, "students", selectedstudent.id);
     try {
       await updateDoc(xDoc, {
-        bdate: bdate,
-        age: age,
-        gender: gender,
-        yearlevel: yearlevel,
-        homead: homead,
-        mobilenum: mobilenum,
-        tel: tel,
-        course: course,
+        mother_name: mother_name,
+        con_mother: con_mother,
+        father_name: father_name,
+        con_pops: con_pops,
+        guradian_name: guardian_name,
+        con_guard: con_guard,
+        // bdate: bdate,
+        // age: age,
+        // gender: gender,
+        // year_level: year_level,
+        // adressd: address,
+        // mobile_um: mobile_num,
+        // tel_num: tel_num,
+        // course: course,
       });
       await props.getstudents();
       // setCount(count + 1);
@@ -57,7 +59,7 @@ function EnrollmentForm(props) {
 
   return (
     <>
-      <Container>
+      <Container fluid style={{ width: "650px" }}>
         <div className="content">
           {/* {bdate}
         {gender}
@@ -68,7 +70,7 @@ function EnrollmentForm(props) {
         {course}
         {selectedstudent.id} */}
           <Form>
-            <h1 className="pt-5 ps-2">Student Enrollment Form</h1>
+            <h1 className="pt-5 text-center">Student Enrollment Form</h1>
             {/* <h2>Select a student</h2> */}
             {/* <Form.Select aria-label="Default select example" onChange={select}>
           <option selected disabled>
@@ -83,11 +85,7 @@ function EnrollmentForm(props) {
 
             <div className="form_body">
               <h3>Student Information</h3>
-              <h3>
-                {/* Student Information: {selectedstudent.lastName}
-              
-              {selectedstudent?.firstName} */}
-              </h3>
+
               <div className="first_name">
                 <label>First Name: </label>
                 <input
@@ -96,10 +94,11 @@ function EnrollmentForm(props) {
                   id="firstName"
                   placeholder="First Name"
                   style={{ marginLeft: "100px" }}
-                  // value={selectedstudent.firstName}
-                  // disabled
+                  value={selectedstudent.firstName}
+                  disabled
                 />
               </div>
+
               <div className="last_name">
                 <label>Last Name:</label>
                 <input
@@ -108,8 +107,8 @@ function EnrollmentForm(props) {
                   id="lastName"
                   placeholder="Last Name"
                   style={{ marginLeft: "100px" }}
-                  // value={selectedstudent.lastName}
-                  // disabled
+                  value={selectedstudent.lastName}
+                  disabled
                 />
               </div>
               <div className="birthdate">
@@ -118,33 +117,28 @@ function EnrollmentForm(props) {
                   type="date"
                   id="birthdate"
                   style={{ marginLeft: "113px", width: "205px" }}
-                  // max={now}
-                  // value={bdate}
-                  // onChange={(date) => setbdate(date.target.value)}
+                  value={selectedstudent.birthdate}
                 />
               </div>
               <div className="gender">
                 <label>Gender: </label>
                 <input
                   type="radio"
-                  value="male"
                   name="gender"
                   style={{ marginLeft: "130px" }}
-                  // onChange={(e) => setGender(e.target.value)}
+                  value={selectedstudent.gender}
                 />
                 <label>Male</label>
                 <input
                   type="radio"
-                  value="female"
+                  value={selectedstudent.gender}
                   name="gender"
-                  // onChange={(e) => setGender(e.target.value)}
                 />
                 <label>Female</label>
                 <input
                   type="radio"
-                  value="other"
+                  value={selectedstudent.gender}
                   name="gender"
-                  // onChange={(e) => setGender(e.target.value)}
                 />
                 <label>Other</label>
               </div>
@@ -152,9 +146,11 @@ function EnrollmentForm(props) {
                 <label>Year Level:</label>
                 <input
                   type="number"
+                  min="1"
+                  max="5"
                   id="year_level"
                   style={{ marginLeft: "105px" }}
-                  // onChange={(e) => setYearlevel(e.target.value)}
+                  value={selectedstudent.year_level}
                 />
               </div>
               <div className="address">
@@ -165,8 +161,7 @@ function EnrollmentForm(props) {
                   width="200px"
                   placeholder="ex. Sitio Malitlit San Miguel Sto.Tomas"
                   style={{ marginLeft: "120px" }}
-
-                  // onChange={(e) => setHomeAd(e.target.value)}
+                  value={selectedstudent.address}
                 />
               </div>
               <div className="mobile_num">
@@ -174,19 +169,19 @@ function EnrollmentForm(props) {
                 <input
                   type="number"
                   id="mobile_num"
+                  placeholder="ex.09123456789"
                   style={{ marginLeft: "63px" }}
-                  // onChange={(e) => setMobileNum(e.target.value)}
+                  value={selectedstudent.mobile_num}
                 />
               </div>
               <div className="tel_num">
                 <label>Telephone Number: </label>
                 <input
                   type="number"
-                  id="mobile_num"
+                  id="tel_num"
                   placeholder="ex (02)-12345674"
                   style={{ marginLeft: "32px" }}
-
-                  // onChange={(e) => setTelNum(e.target.value)}
+                  value={selectedstudent.tel_num}
                 />
               </div>
               <div className="email">
@@ -197,9 +192,7 @@ function EnrollmentForm(props) {
                   width="100px"
                   placeholder="ex. juan@gmail.com"
                   style={{ marginLeft: "70px" }}
-
-                  // disabled={true}
-                  // value={selected}
+                  value={selectedstudent.email}
                 />
               </div>
               <div className="course">
@@ -207,7 +200,7 @@ function EnrollmentForm(props) {
                 <select
                   className="course"
                   style={{ width: "200px", marginLeft: "50px" }}
-                  // onChange={(e) => setCourse(e.target.value)}
+                  value={selectedstudent.course}
                 >
                   <option value="">Select ..</option>
                   <option value="BSBA">BS in Business Administration </option>
@@ -239,9 +232,10 @@ function EnrollmentForm(props) {
                   <input
                     type="text"
                     name="mother"
-                    id="mother"
+                    id="mother_name"
                     placeholder="Mothers Name"
                     style={{ marginLeft: "65px" }}
+                    onChange={(e) => setMotherName(e.target.value)}
                   />
                 </div>
                 <div className="con_mom">
@@ -252,6 +246,7 @@ function EnrollmentForm(props) {
                     id="con_mom"
                     placeholder="ex. 09123456789"
                     style={{ marginLeft: "47px" }}
+                    onChange={(e) => setConMother(e.target.value)}
                   />
                 </div>
                 <div className="fathers_name">
@@ -259,9 +254,10 @@ function EnrollmentForm(props) {
                   <input
                     type="text"
                     name="father"
-                    id="father"
+                    id="father_name"
                     placeholder="Fathers Name"
                     style={{ marginLeft: "70px" }}
+                    onChange={(e) => setFatherName(e.target.value)}
                   />
                 </div>
                 <div className="con_pop">
@@ -269,9 +265,10 @@ function EnrollmentForm(props) {
                   <input
                     type="text"
                     name="contact_pop"
-                    id="con_pop"
+                    id="con_pops"
                     placeholder="09123456789"
                     style={{ marginLeft: "47px" }}
+                    onChange={(e) => setConFather(e.target.value)}
                   />
                 </div>
                 <div className="guardian">
@@ -279,9 +276,10 @@ function EnrollmentForm(props) {
                   <input
                     type="text"
                     name="guardian"
-                    id="guardian"
+                    id="guardian_name"
                     placeholder="Guardians Name"
                     style={{ marginLeft: "55px" }}
+                    onChange={(e) => setGuardianName(e.target.value)}
                   />
                 </div>
                 <div className="con_guard">
@@ -292,7 +290,8 @@ function EnrollmentForm(props) {
                     id="con_guard"
                     placeholder="09123456789"
                     style={{ marginLeft: "47px" }}
-                  ></input>
+                    onChange={(e) => setConGuard(e.target.value)}
+                  />
                 </div>
               </div>
 
@@ -304,7 +303,7 @@ function EnrollmentForm(props) {
                     <input
                       type="file"
                       name="form_137"
-                      style={{ marginLeft: "120px" }}
+                      style={{ marginLeft: "100px" }}
                     />
                   </div>
                   <div className="form_138">
@@ -312,7 +311,7 @@ function EnrollmentForm(props) {
                     <input
                       type="file"
                       name="138"
-                      style={{ marginLeft: "120px" }}
+                      style={{ marginLeft: "100px" }}
                     />
                   </div>
                   <div className="picture">
@@ -320,12 +319,16 @@ function EnrollmentForm(props) {
                     <input
                       type="file"
                       name="picture"
-                      style={{ marginLeft: "105px" }}
+                      style={{ marginLeft: "83px" }}
                     />
                   </div>
                   <div className="psa">
-                    <label className="psa">PSA (Birth Certificate): </label>
-                    <input type="file" name="psa" />
+                    <label className="psa">PSA: </label>
+                    <input
+                      type="file"
+                      name="psa"
+                      style={{ marginLeft: "140px" }}
+                    />
                   </div>
                   <div className="good_moral">
                     <label className="good_moral">Good Moral: </label>
@@ -333,7 +336,7 @@ function EnrollmentForm(props) {
                     <input
                       type="file"
                       name="good_moral"
-                      style={{ marginLeft: "100px" }}
+                      style={{ marginLeft: "77px" }}
                     />
                   </div>
                 </div>

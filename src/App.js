@@ -4,6 +4,7 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Footer from "./Components/Footer";
 import Registration from "./Components/Registration";
+import Admission from "./Components/Admission";
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
 import EnrollmentForm from "./Components/Enrollment";
@@ -22,7 +23,6 @@ function App() {
           path="/profile"
           element={
             <>
-              <OffcanvasExample />
               <Profile />
             </>
           }
@@ -36,7 +36,16 @@ function App() {
             </>
           }
         />
-
+        <Route
+          path="/admission"
+          element={
+            <>
+              <OffcanvasExample />
+              <Admission />
+              <Footer />
+            </>
+          }
+        />
         <Route
           path="/login"
           element={

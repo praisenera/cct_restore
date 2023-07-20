@@ -58,21 +58,6 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link>
-                    <Link className="link" to="/">
-                      Home
-                    </Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link className="link" to="/About">
-                      About
-                    </Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link className="link" to="/About">
-                      Courses
-                    </Link>
-                  </Nav.Link>
                   {auth.currentUser ? (
                     <Nav.Link>
                       <Link
@@ -86,6 +71,26 @@ function OffcanvasExample() {
                     </Nav.Link>
                   ) : (
                     <>
+                      <Nav.Link>
+                        <Link className="link" to="/">
+                          Home
+                        </Link>
+                      </Nav.Link>
+                      <Nav.Link>
+                        <Link className="link" to="/About">
+                          About
+                        </Link>
+                      </Nav.Link>
+                      <Nav.Link>
+                        <Link className="link" to="/admission">
+                          Admission
+                        </Link>
+                      </Nav.Link>
+                      <Nav.Link>
+                        <Link className="link" to="#">
+                          Courses
+                        </Link>
+                      </Nav.Link>
                       <Nav.Link>
                         <Link className="link" to="/login">
                           Login

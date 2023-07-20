@@ -1,17 +1,19 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import Profile from "./Profile";
+import EnrollmentForm from "./Enrollment";
 import { Button, Spinner } from "react-bootstrap";
 import { auth, db, storage } from "../config/firebaseconfig";
 import { addDoc, collection } from "firebase/firestore";
 
-function Registration() {
+function Registration(props) {
+  const students = props?.students?.filter((x) => !x.course);
+
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [birthdate, setBirthdate] = useState(null);
   const [gender, setGender] = useState(null);
   const [address, setAddress] = useState(null);
-  const [mobile_num, setMobileNum] = useState(null);
+  const [mobileNum, setMobileNum] = useState(null);
   const [course, setCourse] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -35,7 +37,7 @@ function Registration() {
     if (id == "address") {
       setAddress(value);
     }
-    if (id == "mobile_num") {
+    if (id == "mobileNum") {
       setMobileNum(value);
     }
     if (id == "course") {
@@ -60,7 +62,7 @@ function Registration() {
       birthdate,
       gender,
       address,
-      mobile_num,
+      mobileNum,
       course,
       email,
       password,
@@ -75,7 +77,7 @@ function Registration() {
           birthdate: birthdate,
           gender: gender,
           address: address,
-          mobile_num: mobile_num,
+          mobile_num: mobileNum,
           course: course,
           email: email,
           userId: auth?.currentUser?.uid,
@@ -90,9 +92,8 @@ function Registration() {
   };
   return (
     <>
-      {" "}
       {auth.currentUser ? (
-        <Profile />
+        <EnrollmentForm />
       ) : (
         <>
           <div className="pb-3">
@@ -121,7 +122,7 @@ function Registration() {
                     type="text"
                     id="lastName"
                     className="form__input"
-                    placeholder="LastName"
+                    placeholder="Last Name"
                     required
                     onChange={handleInputChange}
                   />
@@ -129,7 +130,7 @@ function Registration() {
                 <div className="birthdate">
                   <label>Birhtdate: </label>
                   <input
-                    type="number"
+                    type="date"
                     id="birthdate"
                     className="form__input"
                     placeholder="Bithdate"
@@ -146,7 +147,7 @@ function Registration() {
                     value="male"
                     name="gender"
                     style={{ marginLeft: "110px" }}
-                    onChange={handleInputChange}
+                    onChange={(e) => setGender(e.target.value)}
                   />
                   <label>Male</label>
                   <input
@@ -154,7 +155,7 @@ function Registration() {
                     className="form__input"
                     value="female"
                     name="gender"
-                    onChange={handleInputChange}
+                    onChange={(e) => setGender(e.target.value)}
                   />
                   <label>Female</label>
                   <input
@@ -162,7 +163,7 @@ function Registration() {
                     className="form__input"
                     value="other"
                     name="gender"
-                    onChange={handleInputChange}
+                    onChange={(e) => setGender(e.target.value)}
                   />
                   <label>Other</label>
                   <br />
@@ -186,9 +187,10 @@ function Registration() {
                     id="address"
                     width="200px"
                     style={{ marginLeft: "105px" }}
+                    placeholder="ex. Sitio Malitlit Sto.Tomas"
                     required
                     onChange={handleInputChange}
-                  />{" "}
+                  />
                   <br />
                 </div>
                 <div className="mobile_num">
@@ -196,8 +198,9 @@ function Registration() {
                   <input
                     type="number"
                     className="form__input"
-                    id="mobile_num"
+                    id="mobileNum"
                     style={{ marginLeft: "50px" }}
+                    placeholder="ex.09123456789"
                     required
                     onChange={handleInputChange}
                   />
@@ -207,11 +210,12 @@ function Registration() {
                   <input
                     type="number"
                     className="form_input"
-                    id="mobile_num"
+                    id="telNum"
                     style={{ marginLeft: "18px", width: "205px" }}
+                    placeholder="ex.04-12345678"
                     required
                     onChange={handleInputChange}
-                  />{" "}
+                  />
                   <br />
                 </div>
                 <div className="course">
@@ -220,7 +224,7 @@ function Registration() {
                     className="course"
                     style={{ width: "205px", marginLeft: "35px" }}
                     required
-                    onChange={handleInputChange}
+                    onChange={(e) => setCourse(e.target.value)}
                   >
                     <option value="">Select ..</option>
                     <option value="BSBA">BS in Business Administration </option>

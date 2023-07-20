@@ -7,59 +7,58 @@ import {
   CDBSidebarMenu,
   CDBSidebarMenuItem,
 } from "cdbreact";
-import { Link } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar"
-      style={{ display: "flex", height: "100vh", overflow: "scroll initial",color: "rgb(255, 255, 255)", background: "rgb(51,51,51)" }}
-    >
+    <>
+      <div
+        className="sidebar"
+        style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
+      >
+        <CDBSidebar textColor="#fff" backgroundColor="#333">
+          <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+            <a
+              href="/profile"
+              className="text-decoration-none"
+              style={{ color: "inherit" }}
+            >
+              Home
+            </a>
+          </CDBSidebarHeader>
 
-       <Nav.Link>
-          <Link
-            to="#"
-            className="text-decoration-none"
-            style={{ color: "inherit" }}
-          >
-            <i class="bi bi-house-door-fill">Student Portal</i>
-          </Link>
-          </Nav.Link>
+          <CDBSidebarContent className="sidebar-content">
+            <CDBSidebarMenu>
+              <NavLink exact to="/profile" activeClassName="activeClicked">
+                <CDBSidebarMenuItem icon="user">Profile</CDBSidebarMenuItem>
+              </NavLink>
+              <NavLink exact to="#" activeClassName="activeClicked">
+                <CDBSidebarMenuItem icon="table">Schedule</CDBSidebarMenuItem>
+              </NavLink>
+              <NavLink exact to="#" activeClassName="activeClicked">
+                <CDBSidebarMenuItem icon="columns">Grades</CDBSidebarMenuItem>
+              </NavLink>
+              <NavLink exact to="#" activeClassName="activeClicked">
+                <CDBSidebarMenuItem icon="chart-line">
+                  Announcement
+                </CDBSidebarMenuItem>
+              </NavLink>
+              <NavLink exact to="/login" activeClassName="activeClicked">
+                <CDBSidebarMenuItem icon="exclamation-circle">
+                  Logout
+                </CDBSidebarMenuItem>
+              </NavLink>
+            </CDBSidebarMenu>
+          </CDBSidebarContent>
+        </CDBSidebar>
 
-        <CDBSidebarContent className="sidebar-content">
-          <CDBSidebarMenu>
-            <Nav.Link>
-              <Link to="/" activeClassName="activeClicked">
-                <CDBSidebarMenuItem>
-                  <i className="bi bi-person-fill">Profile</i>
-                </CDBSidebarMenuItem>
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/schedules" className="activeClicked">
-                <CDBSidebarMenuItem disabled>
-                  <i className="bi bi-table">Schedule</i>
-                </CDBSidebarMenuItem>
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/grades" className="activeClicked">
-                <CDBSidebarMenuItem disabled>
-                  <i className="bi bi-bookmark-fill">Grades</i>
-                </CDBSidebarMenuItem>
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/announcement" className="activeClicked">
-                <CDBSidebarMenuItem disabled>
-                  <i className="bi bi-globe-americas">Announcement</i>
-                </CDBSidebarMenuItem>
-              </Link>
-            </Nav.Link>
-          </CDBSidebarMenu>
-        </CDBSidebarContent>
-      </CDBSidebar>
-    </div>
+        <div className="container-sidebar-content">
+          <div className="row">
+            <h1>Welcome User!</h1>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
