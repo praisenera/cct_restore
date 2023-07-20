@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import { auth } from "../config/firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Button, Spinner } from "react-bootstrap";
+import Profile from "./Profile";
 
 function Login() {
   const [email, setEmail] = useState(null);
@@ -15,6 +16,7 @@ function Login() {
     if (id === "email") {
       setEmail(value);
     }
+
     if (id === "password") {
       setPassword(value);
     }
@@ -40,17 +42,17 @@ function Login() {
   return (
     <>
       {auth.currentUser ? (
-        <>signin successs</>
+        <Profile />
       ) : (
         <>
-          <Container style={{ background: "rgb(0, 0, 0, 0.6)" }}>
+          <Container>
             <div className="pt-5 pb-5">
               <div className="form mt-5 mb-5">
                 <div className="form-body">
                   <h1>Please Login</h1>
                   <div className="email">
                     <label className="form__label" for="email">
-                      Email
+                      Email:
                     </label>
                     <input
                       type="email"
@@ -63,7 +65,7 @@ function Login() {
                   </div>
                   <div className="password">
                     <label className="form__label" for="password">
-                      Password
+                      Password:
                     </label>
                     <input
                       className="form__input"
