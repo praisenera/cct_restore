@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <Container fluid style={{ position: "relative" }}>
+      <Container fluid style={{ position: "relative", marginTop: "100px" }}>
         <div className="row">
           <img src={require("../img/hero.PNG")} alt="hero" />
           <Link
@@ -32,9 +32,28 @@ function Home() {
         style={{ marginTop: "100px" }}
       >
         <div className="row text-center pb-5">
-          <h1 className="pt-5 text-center">
+          <h1 className="pt-5 pb-3 text-center">
             <b>Course Offered</b>
           </h1>
+          <hr />
+          <p
+            className="pt-3"
+            style={{ lineHeight: "30px", textIndent: "50px" }}
+          >
+            The school program offerings are recognized by the country's
+            Commission on Higher Education.These are designed to provide
+            opportunities for students to discover their potentials and enhance
+            their technical and creative skills in a vibrant academic
+            environment.
+          </p>
+          <p style={{ lineHeight: "30px", textIndent: "50px" }}>
+            Each program offering is anchored on pragmatic, relevant, and
+            socially responsive curricula that train students to be globally
+            competitive by embracing transdiciplinary, social intelligence, new
+            media literacy, design mindset, and physical and virtual
+            collaboration. The school believes that these skills are required in
+            the emerging professional and social environments.
+          </p>
           <div className="col-lg-6 pt-5">
             <h3>
               <i>BS in Business Accountancy</i>

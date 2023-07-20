@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Admission() {
   return (
     <>
-      <Container className="mb-5">
+      <Container className="mb-5" style={{ marginTop: "120px" }}>
         <Row>
           <h1 className="bg-success p-3 text-light">
             Documentary Requirements
@@ -34,9 +34,22 @@ function Admission() {
             <li>Certificate of Residency.</li>
           </ul>
         </Row>
+        <Row>
+          <p>Submit all requirements to the:</p>
+          <p>
+            <b>OFFICE OF THE REGISTAR</b>
+          </p>
+        </Row>
         <Link to="/register" className="btn btn-success mt-4">
           Click Here for Online College Admission
         </Link>
+        <Row className="mt-5">
+          <p>
+            For questions or inquiries, please contact the OFFICE OF THE
+            REGISTRAR.
+          </p>
+          <p>Telephone No.: (043) 778-54-68</p>
+        </Row>
       </Container>
     </>
   );

@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 function About() {
   return (
     <>
-      <Container className="bg-dark mb-5" style={{ marginTop: "50px" }}>
+      <Container className="bg-dark mb-5" style={{ marginTop: "100px" }}>
         <div className="row col-lg-12 text-light">
           <div className="col-lg-6">
             <h3 className="pt-5 ps-5">

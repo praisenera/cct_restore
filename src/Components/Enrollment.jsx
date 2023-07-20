@@ -59,7 +59,7 @@ function EnrollmentForm(props) {
 
   return (
     <>
-      <Container fluid style={{ width: "650px" }}>
+      <Container fluid style={{ width: "650px", marginTop: "100px" }}>
         <div className="content">
           {/* {bdate}
         {gender}

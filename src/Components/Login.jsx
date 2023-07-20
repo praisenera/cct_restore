@@ -45,7 +45,7 @@ function Login() {
         <Profile />
       ) : (
         <>
-          <Container>
+          <Container style={{ marginTop: "100px" }}>
             <div className="pt-5 pb-5">
               <div className="form mt-5 mb-5">
                 <div className="form-body">

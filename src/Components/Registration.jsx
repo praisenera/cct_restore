@@ -96,7 +96,7 @@ function Registration(props) {
         <EnrollmentForm />
       ) : (
         <>
-          <div className="pb-3">
+          <div className="pb-3" style={{ marginTop: "100px" }}>
             <div className="form">
               <div className="form-body">
                 <h1>Register</h1>

@@ -22,15 +22,15 @@ function Footer() {
             <h5>Location</h5>
             <p>J. V. Pagaspas St.,Poblacion,Tanauan City</p>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-7">
             <img
               src={require("../img/logo.jpg")}
               alt="logo"
-              style={{ float: "right", paddingLeft: "150px" }}
+              style={{ marginLeft: "400px", paddingLeft: "150px" }}
             />
           </div>
           <div classsName="social">
-            <Link to="#">
+            <Link to="https://www.facebook.com/profile.php?id=100068687022264">
               <img
                 src={require("../img/fb.png")}
                 alt="fb"
