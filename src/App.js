@@ -63,7 +63,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/cct_enrollment"
+          path="/"
           element={
             <>
               <OffcanvasExample />

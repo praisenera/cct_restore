@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 function About() {
   return (
     <>
-      <Container className="bg-dark" style={{ marginTop: "50px" }}>
+      <Container className="bg-dark mb-5" style={{ marginTop: "50px" }}>
         <div className="row col-lg-12 text-light">
           <div className="col-lg-6">
             <h3 className="pt-5 ps-5">
@@ -79,7 +79,7 @@ function About() {
         </div>
         <Container>
           <div className="row mt-5">
-            <div className="Col-lg-6 text-light text-center">
+            <div className="col-lg-6 offset-3 text-light text-center">
               <h1>Vision</h1>
               <p style={{ lineHeight: "30px" }}>
                 The Christian College of Tanauan envision to become the best
@@ -94,7 +94,7 @@ function About() {
         </Container>
         <Container>
           <div className="row">
-            <div className="Col-lg-6 text-light text-center">
+            <div className="col-lg-6 offset-3 pb-5 text-light text-center">
               <h1>Mission</h1>
               <p style={{ lineHeight: "30px" }}>
                 CCT is commited to provide the best value foundation and
