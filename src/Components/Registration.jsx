@@ -14,7 +14,9 @@ function Registration(props) {
   const [birthdate, setBirthdate] = useState(null);
   const [gender, setGender] = useState(null);
   const [address, setAddress] = useState(null);
+  const [yearLevel, setYearLevel] = useState(null);
   const [mobileNum, setMobileNum] = useState(null);
+  const [telNum, setTelNum] = useState(null);
   const [course, setCourse] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -45,8 +47,14 @@ function Registration(props) {
     if (id == "address") {
       setAddress(value);
     }
+    if (id == "yearLevel") {
+      setYearLevel(value);
+    }
     if (id == "mobileNum") {
       setMobileNum(value);
+    }
+    if (id == "telNum") {
+      setTelNum(value);
     }
     if (id == "course") {
       setCourse(value);
@@ -71,7 +79,9 @@ function Registration(props) {
       birthdate,
       gender,
       address,
+      yearLevel,
       mobileNum,
+      telNum,
       course,
       email,
       password,
@@ -85,8 +95,10 @@ function Registration(props) {
           lastName: lastName,
           birthdate: birthdate,
           gender: gender,
+          yearLevel: yearLevel,
           address: address,
-          mobile_num: mobileNum,
+          mobileNum: mobileNum,
+          telNum: telNum,
           course: course,
           email: email,
           userId: auth?.currentUser?.uid,
@@ -148,7 +160,7 @@ function Registration(props) {
                     id="birthdate"
                     className="form__input"
                     placeholder="Bithdate"
-                    style={{ marginLeft: "97px" }}
+                    style={{ marginLeft: "97px", width: "200px" }}
                     required
                     onChange={handleInputChange}
                   />
@@ -160,6 +172,7 @@ function Registration(props) {
                     className="form__input"
                     value="male"
                     name="gender"
+                    id="gender"
                     style={{ marginLeft: "110px" }}
                     onChange={(e) => setGender(e.target.value)}
                   />
@@ -169,6 +182,7 @@ function Registration(props) {
                     className="form__input"
                     value="female"
                     name="gender"
+                    id="gender"
                     onChange={(e) => setGender(e.target.value)}
                   />
                   <label>Female</label>
@@ -177,17 +191,18 @@ function Registration(props) {
                     className="form__input"
                     value="other"
                     name="gender"
+                    id="gender"
                     onChange={(e) => setGender(e.target.value)}
                   />
                   <label>Other</label>
                   <br />
                 </div>
-                <div className="year_level">
+                <div className="yearLevel">
                   <label className="form_label">Year Level:</label>
                   <input
                     type="number"
                     className="form__input"
-                    id="year_level"
+                    id="yearLevel"
                     style={{ marginLeft: "90px" }}
                     required
                     onChange={handleInputChange}
@@ -207,7 +222,7 @@ function Registration(props) {
                   />
                   <br />
                 </div>
-                <div className="mobile_num">
+                <div className="mobileNum">
                   <label className="form_label">Mobile Number: </label>
                   <input
                     type="number"
@@ -219,7 +234,7 @@ function Registration(props) {
                     onChange={handleInputChange}
                   />
                 </div>
-                <div className="tele_num">
+                <div className="telNum">
                   <label className="form_label">Telephone Number: </label>
                   <input
                     type="number"
@@ -325,9 +340,20 @@ function Registration(props) {
 
           <Modal show={show} onHide={handleClose} size="xl">
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title>Student Enrollment Form</Modal.Title>
             </Modal.Header>
-            <EnrollmentForm firstName={firstName} lastName={lastName} />
+            <EnrollmentForm
+              firstName={firstName}
+              lastName={lastName}
+              birthdate={birthdate}
+              gender={gender}
+              yearLevel={yearLevel}
+              address={address}
+              mobileNum={mobileNum}
+              telNum={telNum}
+              email={email}
+              course={course}
+            />
             {/* <Modal.Footer></Modal.Footer> */}
           </Modal>
         </>

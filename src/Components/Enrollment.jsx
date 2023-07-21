@@ -10,9 +10,9 @@ function EnrollmentForm(props) {
   const students = props?.students?.filter((x) => !x.course);
   const now = new Date().toISOString().split("T")[0];
 
-  const [selectedstudent, setSelectedstudent] = useState({});
+  // const [selectedstudent, setSelectedstudent] = useState({});
   const [mother_name, setMotherName] = useState("");
-  const [con_mother, setConMother] = useState("");
+  const [con_mom, setConMother] = useState("");
   const [father_name, setFatherName] = useState("");
   const [con_pops, setConFather] = useState("");
   const [guardian_name, setGuardianName] = useState("");
@@ -20,22 +20,22 @@ function EnrollmentForm(props) {
 
   const [spin, setSpin] = useState("");
 
-  const select = (event) => {
-    setSelectedstudent(
-      students.find((student) => student.id == event.target.value)
-    );
-    console.log(selectedstudent);
-  };
+  // const select = (event) => {
+  //   setSelectedstudent(
+  //     students.find((student) => student.id == event.target.value)
+  //   );
+  //   console.log(selectedstudent);
+  // };
 
   const submitx = async (e) => {
     e.preventDefault();
     setSpin(" ");
     console.log("updating doc");
-    const xDoc = doc(db, "students", selectedstudent.id);
+    const xDoc = doc(db, "students", students.id);
     try {
       await updateDoc(xDoc, {
         mother_name: mother_name,
-        con_mother: con_mother,
+        con_mom: con_mom,
         father_name: father_name,
         con_pops: con_pops,
         guradian_name: guardian_name,
@@ -112,7 +112,8 @@ function EnrollmentForm(props) {
                 type="date"
                 id="birthdate"
                 style={{ marginLeft: "113px", width: "205px" }}
-                value={selectedstudent.birthdate}
+                value={props.birthdate}
+                disabled
               />
             </div>
             <div className="gender">
@@ -120,20 +121,26 @@ function EnrollmentForm(props) {
               <input
                 type="radio"
                 name="gender"
+                id="gender"
                 style={{ marginLeft: "130px" }}
-                value={selectedstudent.gender}
+                value={props.gender}
+                disabled
               />
               <label>Male</label>
               <input
                 type="radio"
-                value={selectedstudent.gender}
+                value={props.gender}
+                id="gender"
                 name="gender"
+                disabled
               />
               <label>Female</label>
               <input
                 type="radio"
-                value={selectedstudent.gender}
+                value={props.gender}
+                id="gender"
                 name="gender"
+                disabled
               />
               <label>Other</label>
             </div>
@@ -143,9 +150,10 @@ function EnrollmentForm(props) {
                 type="number"
                 min="1"
                 max="5"
-                id="year_level"
+                id="yearLevel"
                 style={{ marginLeft: "105px" }}
-                value={selectedstudent.year_level}
+                value={props.yearLevel}
+                disabled
               />
             </div>
             <div className="address">
@@ -156,27 +164,30 @@ function EnrollmentForm(props) {
                 width="200px"
                 placeholder="ex. Sitio Malitlit San Miguel Sto.Tomas"
                 style={{ marginLeft: "120px" }}
-                value={selectedstudent.address}
+                value={props.address}
+                disabled
               />
             </div>
             <div className="mobile_num">
               <label>Mobile Number: </label>
               <input
                 type="number"
-                id="mobile_num"
+                id="mobileNum"
                 placeholder="ex.09123456789"
                 style={{ marginLeft: "63px" }}
-                value={selectedstudent.mobile_num}
+                value={props.mobileNum}
+                disabled
               />
             </div>
             <div className="tel_num">
               <label>Telephone Number: </label>
               <input
                 type="number"
-                id="tel_num"
-                placeholder="ex (02)-12345674"
+                id="telNum"
+                placeholder="ex.(02)-12345674"
                 style={{ marginLeft: "32px" }}
-                value={selectedstudent.tel_num}
+                value={props.telNum}
+                disabled
               />
             </div>
             <div className="email">
@@ -187,15 +198,18 @@ function EnrollmentForm(props) {
                 width="100px"
                 placeholder="ex. juan@gmail.com"
                 style={{ marginLeft: "70px" }}
-                value={selectedstudent.email}
+                value={props.email}
+                disabled
               />
             </div>
             <div className="course">
               <label>Specified Course: </label>
               <select
                 className="course"
+                id="course"
                 style={{ width: "200px", marginLeft: "50px" }}
-                value={selectedstudent.course}
+                value={props.course}
+                disabled
               >
                 <option value="">Select ..</option>
                 <option value="BSBA">BS in Business Administration </option>

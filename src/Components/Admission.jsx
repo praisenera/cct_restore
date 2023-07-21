@@ -19,7 +19,7 @@ function Admission() {
             <li>Bring 2x2 picture with white or plain background.</li>
             <li>Photo copy po PSA Birth Certificate. </li>
             <li>Grade 12 Form 138</li>
-            <li>Certificate of Good Moral</li>
+            <li>Certificate of Good Moral from last school attended.</li>
           </ul>
         </Row>
         <Row>

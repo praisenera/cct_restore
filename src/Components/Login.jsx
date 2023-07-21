@@ -77,20 +77,31 @@ function Login() {
                     />
                   </div>
                 </div>
-                {spinner ? (
-                  <Button variant="primary" disabled>
-                    <Spinner
-                      as="span"
-                      animation="grow"
-                      size="sm"
-                      role="status"
-                      aria-hidden="true"
-                    />
-                    Loading...
-                  </Button>
-                ) : (
-                  <Button onClick={handleSubmit}>Login</Button>
-                )}
+                <div className="text-center">
+                  {spinner ? (
+                    <Button variant="primary" disabled>
+                      <Spinner
+                        as="span"
+                        animation="grow"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                      Loading...
+                    </Button>
+                  ) : (
+                    <Button
+                      style={{ width: "200px", marginBottom: "20px" }}
+                      onClick={handleSubmit}
+                    >
+                      Login
+                    </Button>
+                  )}
+                  <br />
+                  <Link to="#" className="mt-4">
+                    Forgot Password?
+                  </Link>
+                </div>
               </div>
             </div>
           </Container>
