@@ -19,7 +19,7 @@ const Sidebar = () => {
         <CDBSidebar textColor="#fff" backgroundColor="#333">
           <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
             <a
-              href="/profile"
+              href="#"
               className="text-decoration-none"
               style={{ color: "inherit" }}
             >
@@ -43,20 +43,9 @@ const Sidebar = () => {
                   Announcement
                 </CDBSidebarMenuItem>
               </NavLink>
-              <NavLink exact to="/login" activeClassName="activeClicked">
-                <CDBSidebarMenuItem icon="exclamation-circle">
-                  Logout
-                </CDBSidebarMenuItem>
-              </NavLink>
             </CDBSidebarMenu>
           </CDBSidebarContent>
         </CDBSidebar>
-
-        <div className="container-sidebar-content">
-          <div className="row">
-            <h1>Welcome User!</h1>
-          </div>
-        </div>
       </div>
     </>
   );

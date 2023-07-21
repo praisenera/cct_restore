@@ -23,6 +23,7 @@ function App() {
           path="/profile"
           element={
             <>
+              <OffcanvasExample />
               <Profile />
             </>
           }
@@ -31,7 +32,6 @@ function App() {
           path="/enrollmentform"
           element={
             <>
-              <OffcanvasExample />
               <EnrollmentForm />
             </>
           }
