@@ -3,13 +3,11 @@ import { Col, Form, Row } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../config/firebaseconfig";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../config/firebaseconfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function EnrollmentForm(props) {
-  const students = props?.students?.filter((x) => !x.course);
-  const now = new Date().toISOString().split("T")[0];
-
   // const [selectedstudent, setSelectedstudent] = useState({});
   const [mother_name, setMotherName] = useState("");
   const [con_mom, setConMother] = useState("");
@@ -19,19 +17,12 @@ function EnrollmentForm(props) {
   const [con_guard, setConGuard] = useState("");
 
   const [spin, setSpin] = useState("");
-
-  // const select = (event) => {
-  //   setSelectedstudent(
-  //     students.find((student) => student.id == event.target.value)
-  //   );
-  //   console.log(selectedstudent);
-  // };
-
+  const studentsCollectionRef = collection(db, "students");
   const submitx = async (e) => {
     e.preventDefault();
     setSpin(" ");
     console.log("updating doc");
-    const xDoc = doc(db, "students", students.id);
+    const xDoc = doc(db, "students", "students.id");
     try {
       await updateDoc(xDoc, {
         mother_name: mother_name,
@@ -40,14 +31,6 @@ function EnrollmentForm(props) {
         con_pops: con_pops,
         guradian_name: guardian_name,
         con_guard: con_guard,
-        // bdate: bdate,
-        // age: age,
-        // gender: gender,
-        // year_level: year_level,
-        // adressd: address,
-        // mobile_um: mobile_num,
-        // tel_num: tel_num,
-        // course: course,
       });
       await props.getstudents();
       // setCount(count + 1);
@@ -56,29 +39,55 @@ function EnrollmentForm(props) {
     }
     setSpin("");
   };
+  const handleSubmit = async (e) => {
+    setSpin(" ");
+    e.preventDefault();
+    if (
+      props.password === props.confirmPassword &&
+      mother_name &&
+      con_mom &&
+      father_name &&
+      con_pops &&
+      guardian_name &&
+      con_guard
+    ) {
+      try {
+        await createUserWithEmailAndPassword(auth, props.email, props.password);
+        await addDoc(studentsCollectionRef, {
+          firstName: props.firstName,
+          lastName: props.lastName,
+          birthdate: props.birthdate,
+          gender: props.gender,
+          yearLevel: props.yearLevel,
+          address: props.address,
+          mobileNum: props.mobileNum,
+          telNum: props.telNum,
+          course: props.course,
+          email: props.email,
+          mother_name: mother_name,
+          con_mom: con_mom,
+          father_name: father_name,
+          con_pops: con_pops,
+          guradian_name: guardian_name,
+          con_guard: con_guard,
+          userId: auth?.currentUser?.uid,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      if (props.password != props.confirmPassword) {
+        alert("password not same");
+      } else {
+        alert("please input required fields or put N/A");
+      }
+    }
+    setSpin("");
+  };
 
   return (
     <>
-      {/* {bdate}
-        {gender}
-        {yearlevel}
-        {homead}
-        {mobilenum}
-        {tel}
-        {course}
-        {selectedstudent.id} */}
-      <Form>
-        {/* <h2>Select a student</h2> */}
-        {/* <Form.Select aria-label="Default select example" onChange={select}>
-          <option selected disabled>
-            none
-          </option>
-          {students?.map((student) => (
-            <option value={student.email} key={student.email}>
-              {student.email}
-            </option>
-          ))}
-        </Form.Select> */}
+      <Form style={{ marginTop: 0 }}>
         <Row>
           <Col>
             <div className="first_name">
@@ -93,7 +102,6 @@ function EnrollmentForm(props) {
                 disabled
               />
             </div>
-
             <div className="last_name">
               <label>Last Name:</label>
               <input
@@ -124,7 +132,8 @@ function EnrollmentForm(props) {
                 id="gender"
                 style={{ marginLeft: "130px" }}
                 value={props.gender}
-                disabled
+                checked={props.gender == "male"}
+                disabled={props.gender != "male"}
               />
               <label>Male</label>
               <input
@@ -132,7 +141,8 @@ function EnrollmentForm(props) {
                 value={props.gender}
                 id="gender"
                 name="gender"
-                disabled
+                checked={props.gender == "female"}
+                disabled={props.gender != "female"}
               />
               <label>Female</label>
               <input
@@ -140,7 +150,8 @@ function EnrollmentForm(props) {
                 value={props.gender}
                 id="gender"
                 name="gender"
-                disabled
+                checked={props.gender == "other"}
+                disabled={props.gender != "other"}
               />
               <label>Other</label>
             </div>
@@ -208,25 +219,48 @@ function EnrollmentForm(props) {
                 className="course"
                 id="course"
                 style={{ width: "200px", marginLeft: "50px" }}
-                value={props.course}
                 disabled
               >
                 <option value="">Select ..</option>
-                <option value="BSBA">BS in Business Administration </option>
-                <option value="BSA">BS in Accountancy </option>
-                <option value="BSMA">BS in Management Accounting </option>
-                <option value="BSHRDM">
+                <option selected={props.course == "BSBA"}>
+                  BS in Business Administration{" "}
+                </option>
+                <option selected={props.course == "BSA"}>
+                  BS in Accountancy{" "}
+                </option>
+                <option selected={props.course == "BSMA"}>
+                  BS in Management Accounting{" "}
+                </option>
+                <option selected={props.course == "BSHRDM"}>
                   BS in Human Resource Development Management
                 </option>
-                <option value="Tourism">BS in Tourism </option>
-                <option value="BSIT">BS in Information Technology</option>
-                <option value="BSCE">BS in Civil Engineering</option>
-                <option value="BSCpE">BS in Computer Engineering</option>
-                <option value="BSEE">BS in Electrical Engineering</option>
-                <option value="BSME">BS in Mechanical Engineering</option>
-                <option value="BSCRIM">BS in Criminology</option>
-                <option value="BSEDUC">Bachelor of Elementary Education</option>
-                <option value="BSEDUC">Bachelor of Secondary Education</option>
+                <option selected={props.course == "Tourism"}>
+                  BS in Tourism{" "}
+                </option>
+                <option selected={props.course == "BSIT"}>
+                  BS in Information Technology
+                </option>
+                <option selected={props.course == "BSCE"}>
+                  BS in Civil Engineering
+                </option>
+                <option selected={props.course == "BSCpE"}>
+                  BS in Computer Engineering
+                </option>
+                <option selected={props.course == "BSEE"}>
+                  BS in Electrical Engineering
+                </option>
+                <option selected={props.course == "BSME"}>
+                  BS in Mechanical Engineering
+                </option>
+                <option selected={props.course == "BSCRIM"}>
+                  BS in Criminology
+                </option>
+                <option selected={props.course == "BSEDUC"}>
+                  Bachelor of Elementary Education
+                </option>
+                <option selected={props.course == "BSEDUC2"}>
+                  Bachelor of Secondary Education
+                </option>
               </select>
             </div>
           </Col>
@@ -302,55 +336,12 @@ function EnrollmentForm(props) {
           </Col>
         </Row>
 
-        {/* <h3>Files for Upload</h3>
-                  <div className="form_137">
-                    <label className="form_137">Form 137: </label>
-                    <input
-                      type="file"
-                      name="form_137"
-                      style={{ marginLeft: "100px" }}
-                    />
-                  </div>
-                  <div className="form_138">
-                    <label className="form_138">Form 138: </label>
-                    <input
-                      type="file"
-                      name="138"
-                      style={{ marginLeft: "100px" }}
-                    />
-                  </div>
-                  <div className="picture">
-                    <label className="picture">2x2 picture: </label>
-                    <input
-                      type="file"
-                      name="picture"
-                      style={{ marginLeft: "83px" }}
-                    />
-                  </div>
-                  <div className="psa">
-                    <label className="psa">PSA: </label>
-                    <input
-                      type="file"
-                      name="psa"
-                      style={{ marginLeft: "140px" }}
-                    />
-                  </div>
-                  <div className="good_moral">
-                    <label className="good_moral">Good Moral: </label>
-
-                    <input
-                      type="file"
-                      name="good_moral"
-                      style={{ marginLeft: "77px" }}
-                    />
-                  </div> */}
-
         <div className="text-center">
           {spin ? (
             <></>
           ) : (
             <button
-              onClick={submitx}
+              onClick={handleSubmit}
               className="btn btn-success"
               style={{ marginBottom: "30px", marginTop: "50px" }}
             >

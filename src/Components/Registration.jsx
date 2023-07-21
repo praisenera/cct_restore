@@ -5,6 +5,7 @@ import { Button, Modal, Spinner } from "react-bootstrap";
 import { auth, db, storage } from "../config/firebaseconfig";
 import { addDoc, collection } from "firebase/firestore";
 import { useEffect } from "react";
+import Profile from "./Profile";
 
 function Registration(props) {
   const students = props?.students?.filter((x) => !x.course);
@@ -70,47 +71,6 @@ function Registration(props) {
     }
   };
   const studentsCollectionRef = collection(db, "students");
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSpinner(" ");
-    console.log(
-      firstName,
-      lastName,
-      birthdate,
-      gender,
-      address,
-      yearLevel,
-      mobileNum,
-      telNum,
-      course,
-      email,
-      password,
-      confirmPassword
-    );
-    if (password === confirmPassword) {
-      try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        await addDoc(studentsCollectionRef, {
-          firstName: firstName,
-          lastName: lastName,
-          birthdate: birthdate,
-          gender: gender,
-          yearLevel: yearLevel,
-          address: address,
-          mobileNum: mobileNum,
-          telNum: telNum,
-          course: course,
-          email: email,
-          userId: auth?.currentUser?.uid,
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      console.log("password not same");
-    }
-    setSpinner("");
-  };
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -119,7 +79,9 @@ function Registration(props) {
   return (
     <>
       {auth.currentUser ? (
-        <></>
+        <>
+          <Profile></Profile>
+        </>
       ) : (
         <>
           <div className="pb-3" style={{ marginTop: "100px" }}>
@@ -272,7 +234,7 @@ function Registration(props) {
                     <option value="BSEDUC">
                       Bachelor of Elementary Education
                     </option>
-                    <option value="BSEDUC">
+                    <option value="BSEDUC2">
                       Bachelor of Secondary Education
                     </option>
                   </select>
@@ -332,7 +294,35 @@ function Registration(props) {
                     Loading...
                   </Button>
                 ) : (
-                  <Button onClick={handleShow}>Register</Button>
+                  <Button
+                    onClick={(e) => {
+                      if (
+                        firstName &&
+                        lastName &&
+                        birthdate &&
+                        gender &&
+                        yearLevel &&
+                        address &&
+                        mobileNum &&
+                        telNum &&
+                        course &&
+                        email &&
+                        password.length >= 6 &&
+                        confirmPassword.length >= 6
+                      ) {
+                        handleShow();
+                      } else if (
+                        password.length < 6 ||
+                        confirmPassword.length < 6
+                      ) {
+                        alert("password should be atleast 6 chars");
+                      } else {
+                        alert("no blank fields allowed");
+                      }
+                    }}
+                  >
+                    Register
+                  </Button>
                 )}
               </div>
             </div>
@@ -353,6 +343,8 @@ function Registration(props) {
               telNum={telNum}
               email={email}
               course={course}
+              password={password}
+              confirmPassword={confirmPassword}
             />
             {/* <Modal.Footer></Modal.Footer> */}
           </Modal>
