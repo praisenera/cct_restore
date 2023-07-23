@@ -80,7 +80,7 @@ function Registration(props) {
     <>
       {auth.currentUser ? (
         <>
-          <Profile></Profile>
+          <Profile />
         </>
       ) : (
         <>

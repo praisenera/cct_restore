@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Carousel from "react-bootstrap/Carousel";
 
 import { Link } from "react-router-dom";
@@ -7,23 +8,123 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <Container fluid style={{ position: "relative", marginTop: "100px" }}>
-        <div className="row">
-          <img src={require("../img/hero.PNG")} alt="hero" />
-          <Link
-            to="/register"
-            className="btn btn-primary"
+      <Container fluid style={{ marginTop: "100px", paddingBottom: "100px" }}>
+        <div className="col-lg-12">
+          <div
+            className="row"
             style={{
-              position: "absolute",
-              marginTop: "450px",
-              marginLeft: "550px",
-              width: "200px",
-              fonSize: "20px",
-              paddingLeft: "10px",
+              paddingBottom: "100px",
+              background: "rgb(48,179,215)",
+              background:
+                "linear-gradient(90deg, rgba(48,179,215,1) 0%, rgba(25,160,203,1) 39%, rgba(60,96,223,0.9192051820728291) 78%)",
             }}
           >
-            Enroll Now!
-          </Link>
+            <div
+              className="col-lg-12 text-center pt-5"
+              style={{ lineHeight: "0px", paddingBottom: "0px" }}
+            >
+              <div className="col-lg-6">
+                <h1
+                  style={{
+                    lineHeight: "0px",
+                    color: "white",
+                    fontSize: "50px",
+                    paddingTop: "50px",
+                  }}
+                >
+                  SOARING
+                </h1>
+                <h1 style={{ fontFamily: "Arial", fontSize: "100px" }}>
+                  <b>HIGH</b>
+                </h1>
+                <p
+                  style={{
+                    fontSize: "40px",
+                    marginLeft: "200px",
+                    color: "white",
+                  }}
+                >
+                  towards
+                </p>
+                <h1 style={{ fontSize: "80px", color: "#F2D545" }}>
+                  <b>EXCELLENCE</b>
+                </h1>
+              </div>
+            </div>
+            <h1
+              style={{
+                color: "black",
+                textAlign: "center",
+                width: "1000px",
+                padding: "20px",
+                marginLeft: "150px",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Courgette', cursive",
+                  fontSize: "70px",
+                }}
+              >
+                Welcome{" "}
+              </span>{" "}
+              to Christian College of Tanauan!
+            </h1>
+            <h5
+              style={{
+                fontFamily: "'Courgette', cursive",
+                fontSize: "40px",
+                textAlign: "center",
+                color: "black",
+              }}
+            >
+              "School of Character, School of Excellence"
+            </h5>
+          </div>
+        </div>
+      </Container>
+      <Container fluid className="bg-light pt-5 pb-5">
+        <div className="row text-center">
+          <h1 className="">
+            <b>School Department</b>
+          </h1>
+          <Carousel className="pt-5 text-center">
+            <Carousel.Item>
+              <img
+                src={require("../img/home/slide1.png")}
+                alt="slide2"
+                style={{ width: "500px" }}
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                src={require("../img/home/slide2.png")}
+                alt="slide2"
+                style={{ width: "500px" }}
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                src={require("../img/home/slide3.png")}
+                alt="slide3"
+                style={{ width: "500px" }}
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                src={require("../img/home/slide4.png")}
+                alt="slide4"
+                style={{ width: "500px" }}
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                src={require("../img/home/slide5.png")}
+                alt="slide4"
+                style={{ width: "500px" }}
+              />
+            </Carousel.Item>
+          </Carousel>
         </div>
       </Container>
 
@@ -160,6 +261,87 @@ function Home() {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+      </Container>
+
+      <Container style={{ paddingTop: "50px" }}>
+        <Row className="text-center col-lg-12">
+          <h1>
+            <b>School Facilities</b>
+          </h1>
+          <img src={require("../img/home/school1.jpg")} alt="school" />
+        </Row>
+      </Container>
+      <Container fluid className="text-center mb-5">
+        <Row className="text-center">
+          <img
+            src={require("../img/home/library.jpg")}
+            alt="library"
+            style={{ width: "280px", marginLeft: "85px", position: "relative" }}
+            className="pe-0"
+          />
+          <h5
+            style={{
+              position: "absolute",
+              marginTop: "250px",
+              width: "200px",
+              marginLeft: "100px",
+            }}
+            className="bg-dark text-light p-3"
+          >
+            Library
+          </h5>
+          <img
+            src={require("../img/home/theatre.jpg")}
+            alt="theatre"
+            style={{ width: "275px", position: "relative" }}
+            className="pe-0 ps-0"
+          />
+          <h5
+            style={{
+              position: "absolute",
+              marginTop: "250px",
+              width: "200px",
+              marginLeft: "370px",
+            }}
+            className="bg-dark text-light p-3"
+          >
+            Theatre
+          </h5>
+          <img
+            src={require("../img/home/hallway.jpg")}
+            alt="hallway"
+            style={{ width: "275px", position: "relative" }}
+            className="pe-0 ps-0"
+          />
+          <h5
+            style={{
+              position: "absolute",
+              marginTop: "250px",
+              width: "200px",
+              marginLeft: "645px",
+            }}
+            className="bg-dark text-light p-3"
+          >
+            Hallway
+          </h5>
+          <img
+            src={require("../img/home/registrar.jpg")}
+            alt="registrar"
+            style={{ width: "275px", position: "relative" }}
+            className="pe-0 ps-0"
+          />
+          <h5
+            style={{
+              position: "absolute",
+              marginTop: "250px",
+              width: "200px",
+              marginLeft: "920px",
+            }}
+            className="bg-dark text-light p-3"
+          >
+            Registrar
+          </h5>
+        </Row>
       </Container>
     </>
   );

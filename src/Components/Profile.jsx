@@ -59,18 +59,32 @@ function Profile() {
           <Row className="pt-4 ps-5">
             <div className="col-lg-6">
               <h3>
-                Name of Student:{profile?.lastName},{profile?.firstName}
+                <span>
+                  {profile?.lastName}, {profile?.firstName}
+                </span>
               </h3>
-              <p className="pt-3">Birthdate: </p>
-              <p>Address: </p>
-              <p>Email: </p>
-              <p>Course:</p>
-              <p>Year Level: </p>
-              <p>Contact Number:</p>
-            </div>
-            <div className="col-lg-6 pt-4">
-              <p className="pt-3">Section: N/A </p>
-              <p>Adviser: N/A</p>
+              <p className="pt-3">
+                Birthdate: <span className="ps-3">{profile?.birthdate}</span>
+              </p>
+              <p>
+                Address: <span className="ps-4">{profile?.address}</span>
+              </p>
+              <p>
+                Email: <span className="ps-5">{profile?.email}</span>
+              </p>
+              <p>
+                Course:{" "}
+                <span style={{ marginLeft: "10px" }} className="ps-4">
+                  {profile?.course}
+                </span>
+              </p>
+              <p>
+                Year Level: <span className="ps-3">{profile?.yearLevel}</span>
+              </p>
+              <p>
+                Contact Number:{" "}
+                <span className="ps-2">{profile?.mobileNum}</span>
+              </p>
             </div>
           </Row>
         </Container>

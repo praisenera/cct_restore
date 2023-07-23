@@ -12,14 +12,19 @@ function Admission() {
             Documentary Requirements
           </h1>
           <h2 className="pt-3">For Upcoming Freshmen Students</h2>
-          <h4 className="pt-4">
+
+          <h3 className="pt-4">
             <b>Walk-in Application</b>
+          </h3>
+          <h4>
+            <b>Student from Old Curricular</b>
           </h4>
           <ul>
             <li>Bring 2x2 picture with white or plain background.</li>
-            <li>Photo copy po PSA Birth Certificate. </li>
+            <li>Original copy of PSA Birth Certificate. </li>
             <li>Grade 12 Form 138</li>
             <li>Certificate of Good Moral from last school attended.</li>
+            <li>Long Brown envelope</li>
           </ul>
         </Row>
         <Row>
@@ -28,10 +33,12 @@ function Admission() {
           </h4>
           <ul>
             <li>Bring 2x2 picture with white or plain background.</li>
-            <li>Photo copy po PSA Birth Certificate. </li>
+            <li>Original copy of PSA Birth Certificate. </li>
             <li>Certificate of Transfer Credential and Copy of Grades</li>
             <li>Certificate of Good Moral from last school attended.</li>
             <li>Certificate of Residency.</li>
+            <li>Marriage Contract (if married; original and 2 photocopies)</li>
+            <li>Long Brown envelope</li>
           </ul>
         </Row>
         <Row>

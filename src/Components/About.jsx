@@ -44,14 +44,16 @@ function About() {
             <img
               src={require("../img/owner.png")}
               alt="owner"
-              style={{ marginTop: "40px" }}
+              style={{ marginTop: "90px" }}
             />
           </div>
           <div
             className="col-lg-6 text-light ps-3"
             style={{ marginTop: "50px" }}
           >
-            <h2>Dr. Vinson B. Pineda</h2>
+            <h2 style={{ fontFamily: "Arial" }}>
+              <b>Dr. Vinson B. Pineda</b>
+            </h2>
             <h5>
               <i>PhD - Dermatology & Venereology</i>
             </h5>
@@ -77,36 +79,35 @@ function About() {
             </p>
           </div>
         </div>
-        <Container>
-          <div className="row mt-5">
-            <div className="col-lg-6 offset-3 text-light text-center">
-              <h1>Vision</h1>
-              <p style={{ lineHeight: "30px" }}>
-                The Christian College of Tanauan envision to become the best
-                character heart formation institution, with distinct academic
-                programs synonimous to being a "school of character and
-                exellence". Moulding and Producing spiritually upright
-                professionals, capable of meeting the changing growing demands
-                of the local and global society.
-              </p>
-            </div>
+
+        <div className="row mt-5">
+          <div className="col-lg-5 text-light ms-5">
+            <h1 style={{ fontFamily: "Arial" }}>
+              <b>Vision</b>
+            </h1>
+            <p style={{ lineHeight: "30px" }}>
+              The Christian College of Tanauan envision to become the best
+              character heart formation institution, with distinct academic
+              programs synonimous to being a "school of character and
+              exellence". Moulding and Producing spiritually upright
+              professionals, capable of meeting the changing growing demands of
+              the local and global society.
+            </p>
           </div>
-        </Container>
-        <Container>
-          <div className="row">
-            <div className="col-lg-6 offset-3 pb-5 text-light text-center">
-              <h1>Mission</h1>
-              <p style={{ lineHeight: "30px" }}>
-                CCT is commited to provide the best value foundation and
-                specialized quality educational programs to learners, sustained
-                with advanced facilities, safe and conducive learning
-                environments with highly competent cademic and non-academic
-                personel, focused in achieving holistic development of
-                individual.
-              </p>
-            </div>
+
+          <div className="col-lg-5 pb-5 offset-1 text-light ms-3">
+            <h1 style={{ fontFamily: "Arial" }}>
+              <b>Mission</b>
+            </h1>
+            <p style={{ lineHeight: "30px" }}>
+              CCT is commited to provide the best value foundation and
+              specialized quality educational programs to learners, sustained
+              with advanced facilities, safe and conducive learning environments
+              with highly competent cademic and non-academic personel, focused
+              in achieving holistic development of individual.
+            </p>
           </div>
-        </Container>
+        </div>
       </Container>
     </>
   );
