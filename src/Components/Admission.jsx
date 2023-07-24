@@ -16,8 +16,8 @@ function Admission() {
           <h3 className="pt-4">
             <b>Walk-in Application</b>
           </h3>
-          <h4>
-            <b>Student from Old Curricular</b>
+          <h4 className="pt-3">
+            <b>Student from Old Curriculum</b>
           </h4>
           <ul>
             <li>Bring 2x2 picture with white or plain background.</li>
